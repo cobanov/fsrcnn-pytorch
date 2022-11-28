@@ -2,6 +2,8 @@
 
 FSRCNN Project:  <http://mmlab.ie.cuhk.edu.hk/projects/FSRCNN.html>
 
+![](http://mmlab.ie.cuhk.edu.hk/projects/FSRCNN/img/framework.png)
+
 ## Dataset
 
 For Training:
