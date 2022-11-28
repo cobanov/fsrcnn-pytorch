@@ -1,0 +1,56 @@
+import data_setup
+import model_builder
+import os
+import torch
+from torchvision import transforms
+
+# Setup hyperparameters
+NUM_EPOCHS = 5
+BATCH_SIZE = 32
+HIDDEN_UNITS = 10
+LEARNING_RATE = 0.001
+
+# Setup directories
+train_dir = "dataset/train"
+test_dir = "dataset/test"
+
+# Setup target device
+device = "mps" if torch.backends.mps.is_available() else "cpu"
+
+# Create transforms
+data_transform = transforms.Compose(
+    [transforms.Resize((64, 64)), transforms.ToTensor()]
+)
+
+# Create DataLoaders with help from data_setup.py
+train_dataloader, test_dataloader = data_setup.create_dataloaders(
+    train_dir=train_dir,
+    test_dir=test_dir,
+    transform=data_transform,
+    batch_size=BATCH_SIZE,
+)
+
+model = model_builder.FSRCNN().to(device)
+print(model)
+
+# # Set loss and optimizer
+# loss_fn = torch.nn.CrossEntropyLoss()
+# optimizer = torch.optim.Adam(model_builder_builder.parameters(), lr=LEARNING_RATE)
+
+# # Start training with help from engine.py
+# engine.train(
+#     model=model_builder_builder,
+#     train_dataloader=train_dataloader,
+#     test_dataloader=test_dataloader,
+#     loss_fn=loss_fn,
+#     optimizer=optimizer,
+#     epochs=NUM_EPOCHS,
+#     device=device,
+# )
+
+# # Save the model with help from utils.py
+# utils.save_model(
+#     model=model_builder_builder,
+#     target_dir="models",
+#     model_name="05_going_modular_script_mode_tinyvgg_model.pth",
+# )
