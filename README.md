@@ -19,3 +19,7 @@ For fine-tuning:
 # General-100 Dataset
 https://www.kaggle.com/datasets/bluesky314/general100
 ```
+
+## To-Do
+
+- [ ] Data Augmentations
